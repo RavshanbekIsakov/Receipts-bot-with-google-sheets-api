@@ -11,7 +11,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 API_TOKEN = '7683442068:AAHzm3u_-AhX2SnQK2QR0iSPPJEhsW5QwJM'
 GROUP_CHAT_ID = -1002103077769
-SHEET_NAME = "Fleet"
+SHEET_NAME = "FleetCare Dashboard"
 PARTS_SHEET_NAME = "Parts"
 CREDENTIALS_FILE = "credentials.json"
 
@@ -39,7 +39,7 @@ class RepairForm(StatesGroup):
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 creds = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILE, scope)
 client = gspread.authorize(creds)
-sheet = client.open(SHEET_NAME).sheet1
+sheet = client.open(SHEET_NAME).worksheet("July")
 parts_sheet = client.open(SHEET_NAME).worksheet(PARTS_SHEET_NAME)
 
 def get_parts(part_type):
