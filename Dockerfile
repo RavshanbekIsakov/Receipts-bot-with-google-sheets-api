@@ -1,17 +1,21 @@
-# Используем образ с уже установленным Python и Rust
-FROM rustlang/rust:nightly
+# Используем официальный образ Python
+FROM python:3.11-slim
 
-# Устанавливаем Python и pip
-RUN apt update && apt install -y python3 python3-pip
+# Устанавливаем Rust, если понадобятся зависимости с компиляцией
+RUN apt update && \
+    apt install -y curl gcc libpq-dev build-essential && \
+    curl https://sh.rustup.rs -sSf | sh -s -- -y && \
+    . "$HOME/.cargo/env"
 
-# Устанавливаем рабочую директорию
+# Устанавливаем рабочую директорию внутри контейнера
 WORKDIR /app
 
-# Копируем всё в контейнер
+# Копируем файлы проекта
 COPY . .
 
 # Устанавливаем зависимости
-RUN pip3 install --upgrade pip && pip3 install -r requirements.txt
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 
 # Запуск бота
-CMD ["python3", "bestversion.py"]
+CMD ["python", "bestversion.py"]
