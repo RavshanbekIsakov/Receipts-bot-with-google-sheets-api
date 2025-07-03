@@ -10,7 +10,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 API_TOKEN = '7683442068:AAHzm3u_-AhX2SnQK2QR0iSPPJEhsW5QwJM'
-GROUP_CHAT_ID = -1002851782656
+GROUP_CHAT_ID = -1002103077769
 SHEET_NAME = "Fleet"
 PARTS_SHEET_NAME = "Parts"
 CREDENTIALS_FILE = "credentials.json"
