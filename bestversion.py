@@ -114,7 +114,7 @@ async def part_chosen(message: Message, state: FSMContext):
             await message.answer("Введите название новой части:")
     elif text == "✅ Завершить выбор ремонта":
         await state.set_state(RepairForm.date)
-        await message.answer("Введите дату ремонта (в формате YYYY-MM-DD):", reply_markup=ReplyKeyboardRemove())
+        await message.answer("Введите дату ремонта (в формате MM/DD/YYYY):", reply_markup=ReplyKeyboardRemove())
     else:
         await state.update_data(current_part=text)
         await state.set_state(RepairForm.action_selection)
