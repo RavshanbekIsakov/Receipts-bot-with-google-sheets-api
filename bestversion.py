@@ -67,7 +67,7 @@ def write_to_google_sheets(data):
     except Exception as e:
         print(f"[Google Sheets ERROR]: {e}")
 
-ACTIONS = ["Replace", "Check", "Buy", "Repair", "Patch", "change"]
+ACTIONS = ["Replace", "Check", "Buy", "Repair", "Patch", "change", "Diagnose"]
 
 @dp.message(F.text.startswith("/add"))
 async def cmd_add(message: Message, state: FSMContext):
